@@ -98,13 +98,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'facebook.backend.FacebookBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 ROOT_URLCONF = 'brandpic.urls'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
+TEMPLATE_DIRS = ( os.path.join(SITE_ROOT, 'templates'),)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -118,6 +119,8 @@ INSTALLED_APPS = (
 
     'gunicorn',
     'storages',
+
+    'facebook',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -143,7 +146,9 @@ LOGGING = {
     }
 }
 
+LOGIN_REDIRECT_URL = '/'
+
 #Facebook Settings
-FACEBOOK_APP_ID = ''
-FACEBOOK_APP_SECRET = '' 
+FACEBOOK_APP_ID = '159795314183061'
+FACEBOOK_APP_SECRET = '5de5565d614048c4757e351b493e72a1' 
 FACEBOOK_SCOPE = 'email,publish_stream'
