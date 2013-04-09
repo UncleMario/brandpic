@@ -64,6 +64,14 @@ USE_L10N = True
 #Site Root
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
+#AMAZON
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = 'AKIAJBJPT42ROYJRYKFA'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'brandpic'
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#AMAZON
+
 #FILES
 MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
 STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
@@ -169,3 +177,4 @@ LOGIN_REDIRECT_URL = '/'
 #Facebook Settings
 FACEBOOK_APP_ID = '159795314183061'
 FACEBOOK_APP_SECRET = '5de5565d614048c4757e351b493e72a1' 
+FACEBOOK_LOGIN_DEFAULT_REDIRECT = '/'
