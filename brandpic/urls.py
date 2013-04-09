@@ -1,17 +1,28 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.auth.views import login, logout
+from django.contrib import admin
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'brandpic.views.home', name='home'),
-    # url(r'^brandpic/', include('brandpic.foo.urls')),
+from facebook.views import login as login_facebook, authentication_callback
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+admin.autodiscover()
 
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
-)
+urlpatterns = patterns('django.views.generic.simple',
+    url(r'^', include('brandpic.home.urls')),
+
+    url(r'^login/$',  login),
+    url(r'^logout/$', logout, {'next_page' : '/'}),
+
+
+    url(r'^facebook/login$', login_facebook),
+    url(r'^facebook/authentication_callback$', authentication_callback),
+    
+    url(r'^profile/', include('brandpic.profile.urls')),
+    url(r'^awards/', include('brandpic.awards.urls')),
+    url(r'^pictures/', include('brandpic.pictures.urls')),
+    url(r'^brands/', include('brandpic.brands.urls')),
+    
+
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
