@@ -33,3 +33,14 @@ def add_brands(words, picture):
 			brand.usage+=1
 			brand.save()
 		picture.brands.add(brand)
+
+
+#Add brands for specific user
+def add_brands_to_user(words, user):
+	for word in words:
+		brand = Brand.objects.filter(name__contains=word)[0]
+		user.profile.brands.add(brand)
+
+
+
+
