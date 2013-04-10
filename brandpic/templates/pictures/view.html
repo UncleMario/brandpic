@@ -1,0 +1,41 @@
+{% extends "3columns.html" %}
+
+{% block section2 %}
+<div class="wrapper-div text-center">
+	<div>
+		<h3 class="font1">Imagen</h3>
+		<div>
+			<img src="{{ picture.get_url }}">
+		</div>
+	</div>
+
+	<div>
+		<h3 class="font1">Marcas Participantes</h3>
+		<div>
+			{% for brand in picture.brands.all %}
+			<a class="btn btn-success btn-large" href="#">{{ brand }}</a>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div>
+		<h3 class="font1">Amas esta marca porque?</h3>
+		<div>
+			<p class="font1 size20"> 
+				{{ picture.description }}
+			</p>
+		</div>
+	</div>
+
+	<div>
+		<h3 class="font1">Premios por esta Foto</h3>
+		<div>
+			{% for award in picture.awards.all %}
+				{{ award }}
+			{% empty %}
+			<h4 class="font1">Aun no has recibido premios por la foto</h4>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}

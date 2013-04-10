@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.http import HttpResponse
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
@@ -14,7 +14,7 @@ from brandpic.pictures.models import Picture
 from brandpic.brands.functions import input_to_words, add_brands
 
 #Upload photo whith love for your favorities brands
-@login_required(login_url='/login/')
+@login_required(login_url='/')
 @facebook_required(scope='publish_stream,user_photos')
 def post(request):
 	if request.method == 'POST':
@@ -42,12 +42,21 @@ def post(request):
 
 
 #View all pictures uploaded by you
-@login_required(login_url='/login/')
+@login_required(login_url='/')
 def my_pictures(request):
 	pictures = Picture.objects.all()
 	return render_to_response('pictures/my_pictures.html',
 		{'pictures':pictures},
 		context_instance=RequestContext(request))
+
+#View picture given URL
+@login_required(login_url='/')
+def view(request, pictureID):
+	picture = get_object_or_404(Picture, pk=pictureID, owner=request.user)
+	return render_to_response('pictures/view.html',
+		{'picture':picture},
+		context_instance=RequestContext(request))
+
 
 
 

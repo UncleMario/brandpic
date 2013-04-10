@@ -1,0 +1,25 @@
+{% extends "3columns.html" %}
+
+{% block section2 %}
+<div>
+	<div class="text-center">
+		<h2 class="font1">Mis Fotos</h2>
+	</div>
+	<div class="text-center">
+		{% for picture in pictures %}
+		<div class="span3 wrapper-div">
+			<div class="thumbnail">
+				<a href="/pictures/view/{{ picture.pk }}">
+					<img src="{{ picture.get_url }}">
+				</a>
+			</div>
+			<div>
+				{% for brand in picture.brands.all %}
+				<a class="btn btn-info" href="#">{{ brand }}</a>
+				{% endfor %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

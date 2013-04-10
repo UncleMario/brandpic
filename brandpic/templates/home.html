@@ -3,10 +3,15 @@
 {% block section2 %}
 
 {% include 'django_facebook/_facebook_js.html' %}
+
+<div class="text-center">
+	<h2 class="font1">brandpic</h2>
+</div>
+
 <div class="text-center">
 	<form action="{% url facebook_connect %}?facebook_login=1" method="post">{% csrf_token %}
 		<a class="btn btn-success btn-large" href="javascript:void(0);" style="font-size: 20px;" onclick="F.connect(this.parentNode);">
-			Iniciar Sesión
+			Entrar
 		</a>
 		<input type="hidden" value="{{ request.path }}" name="next" />
 		<input type="hidden" value="{{ request.path }}" name="register_next" />
@@ -15,20 +20,26 @@
 </div>
 
 <div class="row-fluid">
-	<div class="span4">
+	<div class="span4 background1">
 		<p class="font1 size40 line-height40">
-			Tomate una foto consumiendo un producto
+			1.Tomate una foto consumiendo un producto
 		</p>
 	</div>
-	<div class="span4">
+	<div class="span4 background1">
 		<p class="font1 size40 line-height40">
-			Compartelo en Facebook
+			2.Compartelo en Facebook
 		</p>
 	</div>
-	<div class="span4">
+	<div class="span4 background1">
 		<p class="font1 size40 line-height40">
-			Gana premios, descuentos, productos y Dinero
+			3.Gana premios, descuentos, productos y Dinero
 		</p>
+	</div>
+</div>
+
+<div>
+	<div class="text-center">
+		<h2 class="font1">Marcas Participantes</h2>
 	</div>
 </div>
 {% endblock %}
