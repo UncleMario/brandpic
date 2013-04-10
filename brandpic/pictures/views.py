@@ -44,7 +44,7 @@ def post(request):
 #View all pictures uploaded by you
 @login_required(login_url='/')
 def my_pictures(request):
-	pictures = Picture.objects.all()
+	pictures = Picture.objects.filter(owner=request.user)
 	return render_to_response('pictures/my_pictures.html',
 		{'pictures':pictures},
 		context_instance=RequestContext(request))
