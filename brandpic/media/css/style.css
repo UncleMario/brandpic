@@ -60,6 +60,12 @@ h1, h2, h3, h4, h5 {
 	clear: both;
 	height: 0px;
 }
+.a-logo{
+	color: white;
+}
+.text-center{
+	text-align: center !important;
+}
 
 a.button, input.button, button {
 	color: #FFF;

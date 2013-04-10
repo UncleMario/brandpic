@@ -1,13 +1,16 @@
         <div class="header">
-            <span class="logo">
+            <a class="a-logo" href="/">
+                <span class="logo">
                 brandpic&reg;
-            </span>
+                </span>
+            </a>
             
+            {% if user.is_authenticated %}
             <a class="link" href="/pictures/my-pictures">Mis Fotos</a>
             <a class="link" href="/awards/my-awards">Premios</a>
             <a class="link" href="/brands/my-brands">Mis Marcas</a>
             <a class="link" href="/logout/">Cerrar sesión</a>
-            
+            {% endif %}
             <a class="button f-right" href="/pictures/post">
                 Subir foto
             </a>

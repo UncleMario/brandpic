@@ -8,16 +8,16 @@
 					<span class="highlight">Expresa el amor que sientes por tus</span><br />
 					<span class="highlight">marcas y gana premios</span>
 				</h1>
-				<div class="text-center">
+				<center>
 					<form action="{% url facebook_connect %}?facebook_login=1" method="post">{% csrf_token %}
-						<a class="button green" href="javascript:void(0);" style="font-size: 20px;" onclick="F.connect(this.parentNode);">
+						<a class="button green" href="javascript:void(0);" onclick="F.connect(this.parentNode);">
 							Entrar
 						</a>
 						<input type="hidden" value="{{ request.path }}" name="next" />
 						<input type="hidden" value="{{ request.path }}" name="register_next" />
 						<input type="hidden" value="{{ request.path }}" name="error_next" />
 					</form>
-				</div>
+				</center>
 			</div>
 			<div class="content">
 				<h1 class="align-center">Sólo sigue estos pasos:</h1>
