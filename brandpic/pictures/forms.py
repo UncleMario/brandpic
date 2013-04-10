@@ -7,4 +7,4 @@ from brandpic.pictures.models import Picture
 class PictureForm(ModelForm):
 	class Meta:
 		model = Picture
-		exclude = ('owner','date',)
+		exclude = ('owner','awards','date',)

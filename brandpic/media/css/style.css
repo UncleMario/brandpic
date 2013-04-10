@@ -1,0 +1,24 @@
+/* Roboto Condensed */
+.font1{
+	font-family: 'Roboto Condensed', sans-serif !important;
+}
+/* Londrina Solid */
+.font2{
+	font-family: 'Londrina Solid', cursive !important;
+}
+.size40{
+	font-size: 40px !important;
+}
+.size20{
+	font-size: 20px !important;
+}	
+.line-height40{
+	line-height: 40px;
+}
+/* Principal wrapper on divs */
+.wrapper-div{
+	background: white;
+	border-radius: 2px;
+	border: 1px solid rgb(221, 221, 221);
+	box-shadow: 0pt 1px 3px rgba(150, 150, 150, 0.3);
+}

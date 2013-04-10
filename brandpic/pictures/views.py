@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from django.template.context import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
@@ -11,7 +10,9 @@ from django_facebook.decorators import facebook_required_lazy, facebook_required
 from django_facebook.utils import next_redirect, parse_signed_request
 
 from brandpic.pictures.forms import PictureForm
+from brandpic.pictures.models import Picture
 
+#Upload photo whith love for your favorities brands
 @login_required(login_url='/login/')
 @facebook_required(scope='publish_stream,user_photos')
 def post(request):
@@ -33,6 +34,15 @@ def post(request):
 	return render_to_response('pictures/post.html', 
 			{'form' : form}, 
 			context_instance=RequestContext(request))
+
+
+#View all pictures uploaded by you
+@login_required(login_url='/login/')
+def my_pictures(request):
+	pictures = Picture.objects.all()
+	return render_to_response('pictures/my_pictures.html',
+		{'pictures':pictures},
+		context_instance=RequestContext(request))
 
 
 

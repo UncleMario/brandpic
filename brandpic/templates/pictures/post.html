@@ -1,5 +1,24 @@
-<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
-	{{ form }}
-	{{ form.errors }}
-	<input type="submit" value="subir">
-</form>
+{% extends "3columns.html" %}
+
+{% block section2 %}
+<div class="wrapper-div">
+	<div class="text-center">
+		<h2 class="font2">Expresa el amor que sientes por tus marcas favoritas</h2>
+	</div>
+	<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+		<div>
+			<h4>Sube una Foto con la marca que amas</h4>
+			{{ form.picture }}
+		</div>
+		<div>
+			<h4>Que marcas aparecen en la foto?</h4>
+			{{ form.brands }}
+		</div>
+		<div>
+			<h4>Di porque amas esta marca</h4>
+			{{ form.description }}
+		</div>
+		<input class="btn btn-success btn-large" type="submit" value="Subir Foto">
+	</form>
+</div>
+{% endblock %}

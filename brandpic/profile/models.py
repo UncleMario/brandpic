@@ -5,11 +5,13 @@ from django.db.models.signals import post_save
 from django_facebook.models import FacebookProfileModel
 
 from brandpic.brands.models import Brand
+from brandpic.awards.models import Award
 
 
 class Profile(FacebookProfileModel):
 	user = models.OneToOneField(User)
 	brands = models.ManyToManyField(Brand)
+	awards = models.ManyToManyField(Award)
 
 	def __unicode__(self):
 		return u'%s' % (self.user)
