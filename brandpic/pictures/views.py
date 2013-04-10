@@ -11,6 +11,7 @@ from django_facebook.utils import next_redirect, parse_signed_request
 
 from brandpic.pictures.forms import PictureForm
 from brandpic.pictures.models import Picture
+from brandpic.brands.functions import input_to_words, add_brands
 
 #Upload photo whith love for your favorities brands
 @login_required(login_url='/login/')
@@ -22,6 +23,10 @@ def post(request):
 			picture = form.save(commit=False)
 			picture.owner = request.user
 			picture.save()
+
+			#Adding brands to picture
+			words = input_to_words(request.POST['brands'])
+			add_brands(words, picture)
 
 			fb = get_persistent_graph(request)
 			picture_to_upload = picture.get_url()

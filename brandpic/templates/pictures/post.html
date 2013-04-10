@@ -1,24 +1,58 @@
 {% extends "3columns.html" %}
 
+{% block media-css %}
+<link rel="stylesheet" href="{{ MEDIA_URL }}css/magicsuggest-1.1.1.css">
+{% endblock %}
+
+{% block media-js %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/class-0.0.2.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/magicsuggest-1.1.1.js"></script>
+<script type="text/javascript">
+$(document).on('ready', function(){
+	var brands
+	brands = new MagicSuggest({
+                renderTo: $('#brands-input'),
+                width: 490,
+                emptyText:'Escribe Aqui',
+                noSuggestionText : 'Sin Sugerencias',
+                required: true,
+                data:'/brands_json/',
+                method: 'GET',
+                valueField:'name',
+		});
+	$('#submit-post').on('click', function(e){
+		e.preventDefault()
+		var brands_input = brands.getValue()
+		$('#brands').val(brands_input)
+		$('#form-post-picture').submit()
+	})
+});
+</script>
+{% endblock %}
+
 {% block section2 %}
 <div class="wrapper-div">
 	<div class="text-center">
 		<h2 class="font2">Expresa el amor que sientes por tus marcas favoritas</h2>
 	</div>
-	<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+	<form id="form-post-picture" action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 		<div>
 			<h4>Sube una Foto con la marca que amas</h4>
 			{{ form.picture }}
+			{{ form.picture.errors }}
 		</div>
-		<div>
+		<div id="wrapper-brands">
 			<h4>Que marcas aparecen en la foto?</h4>
-			{{ form.brands }}
+			<input type="text" id="brands-input">
+			<input type="hidden" id="brands" name="brands">
+			{{ form.brands.errors }}
 		</div>
 		<div>
 			<h4>Di porque amas esta marca</h4>
 			{{ form.description }}
+			{{ form.description.errors }}
 		</div>
-		<input class="btn btn-success btn-large" type="submit" value="Subir Foto">
+		<input id="submit-post" class="btn btn-success btn-large" type="submit" value="Subir Foto">
 	</form>
 </div>
 {% endblock %}

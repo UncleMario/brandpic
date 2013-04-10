@@ -4,6 +4,8 @@ from django.conf import settings
 from django.contrib.auth.views import logout
 from django.contrib import admin
 
+from brandpic.brands.functions import brands_json
+
 admin.autodiscover()
 
 urlpatterns = patterns('django.views.generic.simple',
@@ -18,5 +20,6 @@ urlpatterns = patterns('django.views.generic.simple',
     url(r'^awards/', include('brandpic.awards.urls')),
     url(r'^pictures/', include('brandpic.pictures.urls')),
     url(r'^brands/', include('brandpic.brands.urls')),
+    url(r'^brands_json/', brands_json),
     
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
