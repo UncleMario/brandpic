@@ -22,7 +22,7 @@ ADMINS = (
     ('Juan Carlos Cayetano', 'jc@brainn.co'),
 )
 
-AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
+AUTH_PROFILE_MODULE = 'profile.Profile'
 
 MANAGERS = ADMINS
 

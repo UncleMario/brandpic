@@ -13,7 +13,7 @@ def my_brands(request):
 
 
 #Add new brand than user loves
-@login_required(login_required='/')
+@login_required(login_url='/')
 def add(request):
 	from brandpic.brands.functions import input_to_words, add_brands_to_user
 
