@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.template import RequestContext
@@ -33,7 +33,7 @@ def post(request):
 			fb.set('me/photos', url=picture_to_upload, message=picture.description)
 			messages.info(request, 'Imagen subida correctamente')
 
-			return HttpResponse('Imagen subida')
+			return HttpResponseRedirect('/pictures/view/%s' % (picture.pk))
 	else:
 		form = PictureForm()
 	return render_to_response('pictures/post.html', 

@@ -1,25 +1,24 @@
-{% extends "3columns.html" %}
+{% extends "base.html" %}
 
-{% block section2 %}
-<div>
-	<div class="text-center">
-		<h2 class="font1">Mis Fotos</h2>
-	</div>
-	<div class="text-center">
-		{% for picture in pictures %}
-		<div class="span3 wrapper-div">
-			<div class="thumbnail">
-				<a href="/pictures/view/{{ picture.pk }}">
-					<img src="{{ picture.get_url }}">
-				</a>
+{% block content %}
+			<div class="content align-center">
+				<h1>Mis fotos</h1>
+				<div class="photos centering-fix">
+					{% for picture in pictures %}
+					<div class="photo">
+						<div class="media">
+							<a href="/pictures/view/{{ picture.pk }}">
+								<img src="{{ picture.get_url }}" alt="coca_cola_logo"/>
+							</a>
+						</div>
+						<div class="tags">
+							{% for brand in picture.brands.all %}
+							<span class="tag">{{ brand }}</span>
+							{% endfor %}
+						</div>
+					</div>
+					{% endfor %}
+					<div class="clear-fix">&nbsp;</div>
+				</div>
 			</div>
-			<div>
-				{% for brand in picture.brands.all %}
-				<a class="btn btn-info" href="#">{{ brand }}</a>
-				{% endfor %}
-			</div>
-		</div>
-		{% endfor %}
-	</div>
-</div>
 {% endblock %}

@@ -1,45 +1,60 @@
-{% extends "3columns.html" %}
+{% extends "base.html" %}
 
-{% block section2 %}
+{% block content %}
 
 {% include 'django_facebook/_facebook_js.html' %}
-
-<div class="text-center">
-	<h2 class="font1">brandpic</h2>
-</div>
-
-<div class="text-center">
-	<form action="{% url facebook_connect %}?facebook_login=1" method="post">{% csrf_token %}
-		<a class="btn btn-success btn-large" href="javascript:void(0);" style="font-size: 20px;" onclick="F.connect(this.parentNode);">
-			Entrar
-		</a>
-		<input type="hidden" value="{{ request.path }}" name="next" />
-		<input type="hidden" value="{{ request.path }}" name="register_next" />
-		<input type="hidden" value="{{ request.path }}" name="error_next" />
-	</form>
-</div>
-
-<div class="row-fluid">
-	<div class="span4 background1">
-		<p class="font1 size40 line-height40">
-			1.Tomate una foto consumiendo un producto
-		</p>
-	</div>
-	<div class="span4 background1">
-		<p class="font1 size40 line-height40">
-			2.Compartelo en Facebook
-		</p>
-	</div>
-	<div class="span4 background1">
-		<p class="font1 size40 line-height40">
-			3.Gana premios, descuentos, productos y Dinero
-		</p>
-	</div>
-</div>
-
-<div>
-	<div class="text-center">
-		<h2 class="font1">Marcas Participantes</h2>
-	</div>
-</div>
+			<div class="principal">
+				<h1>
+					<span class="highlight">Expresa el amor que sientes por tus</span><br />
+					<span class="highlight">marcas y gana premios</span>
+				</h1>
+				<div class="text-center">
+					<form action="{% url facebook_connect %}?facebook_login=1" method="post">{% csrf_token %}
+						<a class="button green" href="javascript:void(0);" style="font-size: 20px;" onclick="F.connect(this.parentNode);">
+							Entrar
+						</a>
+						<input type="hidden" value="{{ request.path }}" name="next" />
+						<input type="hidden" value="{{ request.path }}" name="register_next" />
+						<input type="hidden" value="{{ request.path }}" name="error_next" />
+					</form>
+				</div>
+			</div>
+			<div class="content">
+				<h1 class="align-center">Sólo sigue estos pasos:</h1>
+				<div class="column">
+					<div class="icon">
+						<img src="{{ MEDIA_URL }}img/icons/camera.png" alt="Camera" />
+					</div>
+					1. Tomate una foto consumiendo un producto
+				</div>
+				<div class="column">
+					<div class="icon">
+						<img src="{{ MEDIA_URL }}img/icons/like.png" alt="Like icon" />
+					</div>
+					2. Compartelo en Facebook
+				</div>
+				<div class="column">
+					<div class="icon">
+						<img src="{{ MEDIA_URL }}img/icons/rewards.png" alt="Rewards" />
+					</div>
+					3. Gana premios, descuentos, productos y dinero
+				</div>
+				
+				<div class="clear-fix">&nbsp;</div>
+				
+				<div class="brands">
+					<h1>¡Tus marcas favoritas!</h1>
+					<img src="{{ MEDIA_URL }}img/brands/coca_cola_logo.gif" alt="coca_cola_logo" />
+					<img src="{{ MEDIA_URL }}img/brands/Lacoste-Logo.jpg" alt="Lacoste-Logo" />
+					<img src="{{ MEDIA_URL }}img/brands/levisLogo.png" alt="levisLogo" />
+					<img src="{{ MEDIA_URL }}img/brands/toms-shoes.jpg" alt="toms-shoes" />
+					<img src="{{ MEDIA_URL }}img/brands/Hersheys.png" alt="Hersheys" />
+					<img src="{{ MEDIA_URL }}img/brands/mcdonalds.jpg" alt="mcdonalds" />
+					<img src="{{ MEDIA_URL }}img/brands/20522896_BG1.jpg" alt="20522896_BG1" />
+					<img src="{{ MEDIA_URL }}img/brands/pepsi_profile.png" alt="pepsi_profile" />
+					<img src="{{ MEDIA_URL }}img/brands/sabritas_2.jpg" alt="sabritas_2" />
+					<img src="{{ MEDIA_URL }}img/brands/burger-king.jpg" alt="burger-king" />
+					<img src="{{ MEDIA_URL }}img/brands/calvin-klein-logo-448x113.jpg" alt="calvin-klein-logo-448x113" />
+				</div>			
+			</div>
 {% endblock %}

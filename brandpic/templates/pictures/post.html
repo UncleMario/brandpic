@@ -1,4 +1,4 @@
-{% extends "3columns.html" %}
+{% extends "base.html" %}
 
 {% block media-css %}
 <link rel="stylesheet" href="{{ MEDIA_URL }}css/magicsuggest-1.1.1.css">
@@ -29,29 +29,42 @@ $(document).on('ready', function(){
 </script>
 {% endblock %}
 
-{% block section2 %}
-<div class="wrapper-div">
-	<div class="text-center">
-		<h2 class="font2">Expresa el amor que sientes por tus marcas favoritas</h2>
-	</div>
-	<form id="form-post-picture" action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
-		<div>
-			<h4>Sube una Foto con la marca que amas</h4>
-			{{ form.picture }}
-			{{ form.picture.errors }}
-		</div>
-		<div id="wrapper-brands">
-			<h4>Que marcas aparecen en la foto?</h4>
-			<input type="text" id="brands-input">
-			<input type="hidden" id="brands" name="brands">
-			{{ form.brands.errors }}
-		</div>
-		<div>
-			<h4>Di porque amas esta marca</h4>
-			{{ form.description }}
-			{{ form.description.errors }}
-		</div>
-		<input id="submit-post" class="btn btn-success btn-large" type="submit" value="Subir Foto">
-	</form>
-</div>
+{% block content %}
+			<div class="content align-center">
+				<h1 class="align-center">Expresa el amor que sientes por tus marcas favoritas</h1>
+				<form id="form-post-picture" class="centering-fix" action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+					<p id="file-uploader-paragraph">
+						<h4>Sube una foto con la marca que amas</h4>
+						{{ form.picture }}
+						{{ form.picture.errors }}
+						<a class="button" id="file-uploader-button" style="background:#0D89E9">
+							Seleccionar foto
+						</a>
+						<script>
+							$(window).load(function () {
+								$('#file-uploader-input').hide();
+								var button = $('#file-uploader-button');
+								button.on('click', function () {
+									$('#file-uploader-input').click();
+								});
+								
+							});
+						</script>
+					</p>
+					
+					<div id="wrapper-brands">
+						<h4>Que marcas aparecen en la foto?</h4>
+						<input type="text" id="brands-input">
+						<input type="hidden" id="brands" name="brands">
+						{{ form.brands.errors }}
+					</div>
+
+					<p>
+						<h4>Descripción</h4>
+						{{ form.description }}
+						{{ form.description.errors }}
+					</p>
+					<input id="submit-post" class="button green" type="submit" value="Subir"/>
+				</form>
+			</div>
 {% endblock %}
