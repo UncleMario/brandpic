@@ -14,7 +14,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 gettext_noop = lambda s: s
 
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -144,8 +143,10 @@ INSTALLED_APPS = (
 
     'gunicorn',
     'storages',
+    'tastypie',
+    'tastypie_ext',
 
-    'django_facebook'
+    'django_facebook',
 
 )
 
@@ -176,4 +177,8 @@ LOGIN_REDIRECT_URL = '/'
 
 #Facebook Settings
 FACEBOOK_APP_ID = '159795314183061'
-FACEBOOK_APP_SECRET = '823d1bb0bb9851f949a737720d824bb9' 
+FACEBOOK_APP_SECRET = '823d1bb0bb9851f949a737720d824bb9'
+
+TASTYPIE_EXT_USERRESOURCE_FIELDS = ['email', 'username', 'first_name' ]
+
+

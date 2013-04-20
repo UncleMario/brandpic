@@ -3,7 +3,4 @@ venv
 *.pyo
 *~
 localsettings.py
-howmuch/media/pictures/
-howmuch/media/profile/
-howmuch/media/images/facebook_profiles/
 \#*
