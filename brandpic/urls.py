@@ -7,16 +7,24 @@ from django.contrib import admin
 from tastypie.api import Api
 
 from brandpic.brands.functions import brands_json
-from brandpic.brands.api.resources import *
-from tastypie_ext.resources import GETAPIFacebookTokenAuthenticationResource, SessionResource
+from brandpic.brands.api.resources import PictureResource, BrandResource, UserResource
+from tastypie_ext.resources import GETAPITokenAuthenticationResource
+from tastypie_ext.resources import GETAPIFacebookTokenAuthenticationResource
+from tastypie_ext.resources import POSTAPITokenAuthenticationResource, GETAPITokenAuthenticationResource
+from tastypie_ext.resources import SessionResource
 admin.autodiscover()
 
 v1_api = Api(api_name='v1')
+
 v1_api.register(UserResource())
 v1_api.register(PictureResource())
 v1_api.register(BrandResource())
+v1_api.register(GETAPITokenAuthenticationResource())
 v1_api.register(GETAPIFacebookTokenAuthenticationResource())
 v1_api.register(SessionResource())
+v1_api.register(POSTAPITokenAuthenticationResource())
+v1_api.register(GETAPITokenAuthenticationResource())
+
 
 urlpatterns = patterns('django.views.generic.simple',
     url(r'^$', 'direct_to_template', {'template':'home.html'}),

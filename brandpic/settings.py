@@ -21,7 +21,7 @@ ADMINS = (
     ('Juan Carlos Cayetano', 'jc@brainn.co'),
 )
 
-AUTH_PROFILE_MODULE = 'profile.Profile'
+AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
 MANAGERS = ADMINS
 
@@ -179,6 +179,10 @@ LOGIN_REDIRECT_URL = '/'
 FACEBOOK_APP_ID = '159795314183061'
 FACEBOOK_APP_SECRET = '823d1bb0bb9851f949a737720d824bb9'
 
+#Tastypie Settings
 TASTYPIE_EXT_USERRESOURCE_FIELDS = ['email', 'username', 'first_name' ]
+TASTYPIE_ABSTRACT_APIKEY = True
+TASTYPIE_FULL_DEBUG = True
+TASTYPIE_ALLOW_MISSING_SLASH = True
 
 
