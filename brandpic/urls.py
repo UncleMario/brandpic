@@ -28,6 +28,8 @@ v1_api.register(GETAPITokenAuthenticationResource())
 
 urlpatterns = patterns('django.views.generic.simple',
     url(r'^$', 'direct_to_template', {'template':'home.html'}),
+    url(r'^channel/$', 'direct_to_template', {'template':'channel.html'}),
+    url(r'^loginfacebook/$', 'direct_to_template', {'template':'loginfacebook.html'}),
 
     url(r'^logout/$', logout, {'next_page' : '/'}),
 
